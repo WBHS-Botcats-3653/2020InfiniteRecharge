@@ -1,0 +1,38 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class climbMode extends SubsystemBase {
+  /**
+   * Creates a new climbMode.
+   */
+
+  public int climbMode;
+
+  public climbMode() {
+    climbMode = 0;
+  }
+
+  public void toggleMode(){
+    if(climbMode==0){
+      climbMode = 1;
+    } else if (climbMode==1){
+      climbMode = 0;
+    }
+  }
+
+  @Override
+  public void periodic() {
+    SmartDashboard.putNumber("climbMode", climbMode);
+    // This method will be called once per scheduler run
+  }
+}
