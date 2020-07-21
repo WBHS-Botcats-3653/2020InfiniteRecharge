@@ -77,7 +77,8 @@ public class limelight extends SubsystemBase {
       camMode.setNumber(0);
     }
   }
-
+  
+  // distance between the center of the robot and the target
   public double getCenterDistance(){
     double lime_target_distance = (height_target-height_cam)/Math.tan(Math.toRadians(getY()+cam_angle));
     double center_target_distance = Math.sqrt(Math.pow(lime_target_distance,2)+Math.pow(lime_center_distance,2)-2*(lime_target_distance*lime_center_distance)*Math.cos(Math.toRadians(90+lime_center_angle)));
@@ -89,6 +90,8 @@ public class limelight extends SubsystemBase {
     return getCenterDistance()+center_shooter_distance;
   }
 
+
+  // angle correction since limelight is not aligned with the shooter
   public double getCorrection(){
     double correction = Math.toDegrees(Math.asin(lime_shooter_distance/getCenterDistance()));
     return Math.abs(correction)*1;

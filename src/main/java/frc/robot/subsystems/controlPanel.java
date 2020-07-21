@@ -16,21 +16,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class controlPanel extends SubsystemBase {
-  /**
-   * Creates a new controlPanel.
-   */
   private WPI_VictorSPX m_control = null;
   private Servo m_conLift = null;
-  private double maxControl = 1;
 
   public controlPanel() {
     m_control = new WPI_VictorSPX(Constants.controlPanel);
     m_conLift = new Servo(Constants.controlPanelLift);
   }
-
-  public void controlLift(double speed){
-    m_conLift.setAngle(speed*maxControl);
-    DriverStation.reportError("in controlLift", true);
+  
+  // Sets servo angle
+  public void controlLift(double angle){
+    m_conLift.setAngle(angle);
   }
 
   public void controlSpin(double speed){

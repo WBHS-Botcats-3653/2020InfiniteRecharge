@@ -43,22 +43,28 @@ public class drive extends SubsystemBase {
     m_rightDriveMaster = new WPI_VictorSPX(Constants.rightDriveM);
     m_leftDriveSlave = new WPI_VictorSPX(Constants.leftDriveS);
     m_rightDriveSlave = new WPI_VictorSPX(Constants.rightDriveS);
+
+    // Sets drive to brake when zeroed. Alternatively,
+    // could be set to coast when zeroed.
     m_leftDriveMaster.setNeutralMode(NeutralMode.Brake);
     m_leftDriveSlave.setNeutralMode(NeutralMode.Brake);
     m_rightDriveMaster.setNeutralMode(NeutralMode.Brake);
     m_rightDriveSlave.setNeutralMode(NeutralMode.Brake);
-
+    
+    // Groups both left controls and both right controllers
+    // to have the same values. Inverts one side so it controls
+    // properly
     m_leftDrive = new SpeedControllerGroup(m_leftDriveMaster, m_leftDriveSlave);
     m_rightDrive = new SpeedControllerGroup(m_rightDriveMaster, m_rightDriveSlave);
     m_leftDrive.setInverted(true);
-
+    
+    // Creates differential drive using motor groups
     m_drive = new DifferentialDrive(m_leftDrive,m_rightDrive);
   }
 
   public void differentialDrive(double angle, double speed){
     SmartDashboard.putNumber("rotation", angle);
     SmartDashboard.putNumber("speed", speed);
-    //DriverStation.reportError("in drive", true);
     m_drive.arcadeDrive(speed,angle);
   }
 

@@ -13,9 +13,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ultrasonic extends SubsystemBase {
-  /**
-   * Creates a new ultrasonic.
-   */
   AnalogInput ultrasonicMid = null;
   double scaling = 1;
 
@@ -23,6 +20,8 @@ public class ultrasonic extends SubsystemBase {
     ultrasonicMid = new AnalogInput(Constants.ultraMid);
     ultrasonicMid.setAverageBits(8);
   }
+
+  // Grab values from the ultrasonic sensor
   public double getAvgVoltage(){
     return ultrasonicMid.getAverageValue();
   }
@@ -39,7 +38,6 @@ public class ultrasonic extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
     SmartDashboard.putNumber("ultravalue", getDistance()*100);
   }
 }

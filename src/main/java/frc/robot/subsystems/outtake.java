@@ -19,9 +19,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 
 public class outtake extends SubsystemBase {
-  /**
-   * Creates a new outtake.
-   */
   private WPI_TalonSRX m_outtake1 = null;
   private WPI_TalonSRX m_outtake2 = null;
 
@@ -33,7 +30,6 @@ public class outtake extends SubsystemBase {
   }
 
   public void driveOuttake(double speed){
-    DriverStation.reportError("in outtake", true);
     m_outtake1.set(speed*maxOut);
     m_outtake2.set(speed*maxOut);
   }
@@ -41,7 +37,5 @@ public class outtake extends SubsystemBase {
   @Override
   public void periodic() {
     maxOut = NetworkTableInstance.getDefault().getTable("Preferences").getEntry("maxShooter").getDouble(0.0);
-
-    // This method will be called once per scheduler run
   }
 }

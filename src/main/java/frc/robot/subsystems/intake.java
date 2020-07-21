@@ -19,10 +19,6 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class intake extends SubsystemBase {
-  /**
-   * Creates a new intake.
-   */
-
   private double maxIntake = 1;
   private WPI_VictorSPX m_intake = null;
   private double direction;
@@ -43,6 +39,5 @@ public class intake extends SubsystemBase {
   @Override
   public void periodic() {
     maxIntake = NetworkTableInstance.getDefault().getTable("Preferences").getEntry("maxIntake").getDouble(0.0);
-    // This method will be called once per scheduler run
   }
 }

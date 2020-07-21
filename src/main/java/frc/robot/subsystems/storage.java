@@ -17,9 +17,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 
 public class storage extends SubsystemBase {
-  /**
-   * Creates a new storage.
-   */
   private WPI_VictorSPX m_storage = null;
   private double maxStorage = 1;
   private double direction;
@@ -30,7 +27,6 @@ public class storage extends SubsystemBase {
   }
 
   public void storageDrive(double speed){
-    DriverStation.reportError("in storage", true);
     direction = speed;
     m_storage.set(-speed*maxStorage);
   }
@@ -41,7 +37,6 @@ public class storage extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
     maxStorage = NetworkTableInstance.getDefault().getTable("Preferences").getEntry("maxStorage").getDouble(0.0);
 
   }

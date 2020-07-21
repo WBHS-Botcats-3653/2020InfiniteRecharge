@@ -16,9 +16,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class driveSensors extends SubsystemBase {
-  /**
-   * Creates a new driveEncoders.
-   */
   Encoder leftEncoder, rightEncoder;
   ADXRS450_Gyro gyro = null;
 

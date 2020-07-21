@@ -18,9 +18,6 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class conveyer extends SubsystemBase {
-  /**
-   * Creates a new conveyer.
-   */
   
   private double maxConveyer = 0.7;
   private WPI_VictorSPX m_delivery = null;
@@ -33,7 +30,6 @@ public class conveyer extends SubsystemBase {
   }
 
   public void deliveryDrive(double speed){
-    DriverStation.reportError("in delivery", true);
     direction = speed;
     m_delivery.set(-speed*maxConveyer);
   }
@@ -45,7 +41,5 @@ public class conveyer extends SubsystemBase {
   @Override
   public void periodic() {
     maxConveyer = NetworkTableInstance.getDefault().getTable("Preferences").getEntry("maxConveyer").getDouble(0.0);
-
-    // This method will be called once per scheduler run
   }
 }

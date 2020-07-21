@@ -12,10 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class climbMode extends SubsystemBase {
-  /**
-   * Creates a new climbMode.
-   */
-
   public int climbMode;
 
   public climbMode() {
@@ -33,6 +29,5 @@ public class climbMode extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("climbMode", climbMode);
-    // This method will be called once per scheduler run
   }
 }
